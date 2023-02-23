@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.yandex.practicum.filmorate.model.Film;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -47,7 +49,7 @@ public class FilmController {
     }
 
     @GetMapping
-    public Map<Integer, Film> getFilms() {
-        return films;
+    public List<Film> getFilms() {
+        return new ArrayList<Film>(films.values());
     }
 }

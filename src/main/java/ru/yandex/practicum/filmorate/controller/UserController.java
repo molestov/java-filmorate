@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.yandex.practicum.filmorate.model.User;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -28,8 +30,8 @@ public class UserController {
     }
 
     @GetMapping
-    public Map<Integer, User> getUsers() {
-        return users;
+    public List<User> getUsers() {
+        return new ArrayList<User>(users.values());
     }
 
     @PostMapping
