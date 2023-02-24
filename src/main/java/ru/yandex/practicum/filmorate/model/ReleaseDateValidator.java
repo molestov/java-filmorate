@@ -6,11 +6,9 @@ import javax.validation.ConstraintValidatorContext;
 import java.time.LocalDate;
 
 public class ReleaseDateValidator implements ConstraintValidator<ReleaseDate, LocalDate> {
-    @Override
-    public void initialize(ReleaseDate releaseDate) {}
-
+    private final LocalDate FIRST_FILM_DATE = LocalDate.of(1895, 12, 28);
     @Override
     public boolean isValid(LocalDate releaseDate, ConstraintValidatorContext cxt) {
-        return releaseDate.isAfter(LocalDate.of(1895, 12, 28));
+        return releaseDate.isAfter(FIRST_FILM_DATE);
     }
 }

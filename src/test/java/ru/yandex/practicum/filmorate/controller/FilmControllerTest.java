@@ -52,7 +52,7 @@ class FilmControllerTest {
                 .content(testJson)
                 .contentType(MediaType.APPLICATION_JSON)
                 )
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().isBadRequest());
     }
 
     @Test
@@ -65,7 +65,7 @@ class FilmControllerTest {
                         .content(testJson)
                         .contentType(MediaType.APPLICATION_JSON)
                 )
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().isBadRequest());
     }
 
     @Test
@@ -76,7 +76,7 @@ class FilmControllerTest {
                         .content(testJson)
                         .contentType(MediaType.APPLICATION_JSON)
                 )
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().isBadRequest());
     }
 
     @Test
@@ -87,7 +87,7 @@ class FilmControllerTest {
                         .content(testJson)
                         .contentType(MediaType.APPLICATION_JSON)
                 )
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().isBadRequest());
     }
 
     @Test
@@ -98,7 +98,7 @@ class FilmControllerTest {
                         .content(testJson)
                         .contentType(MediaType.APPLICATION_JSON)
                 )
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().isNotFound());
     }
 
 }

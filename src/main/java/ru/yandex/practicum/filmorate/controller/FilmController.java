@@ -21,18 +21,10 @@ public class FilmController {
     private Map<Integer, Film> films = new HashMap<>();
     private int id = 1;
 
-    private int setFilmId() {
-        while (films.containsKey(id)) {
-            id++;
-        }
-        return id;
-    }
-
     @PostMapping
     public Film addFilm(@Valid @RequestBody Film film) {
-        if (film.getId() == 0) {
-            film.setId(setFilmId());
-        }
+        film.setId(id);
+        id++;
         films.put(film.getId(), film);
         log.info("New film added: '{}'", film.getName());
         return film;
@@ -40,7 +32,7 @@ public class FilmController {
 
     @PutMapping
     public Film updateFilm(@Valid @RequestBody Film film) {
-        if (!films.containsKey(film.getId()) || film.getId() == 0) {
+        if (!films.containsKey(film.getId())) {
             throw new UnknownIdExcerption();
         }
         films.replace(film.getId(), film);

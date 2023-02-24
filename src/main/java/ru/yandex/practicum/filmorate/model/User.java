@@ -2,6 +2,7 @@ package ru.yandex.practicum.filmorate.model;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import lombok.Data;
 
@@ -17,7 +18,9 @@ public class User {
     @NotBlank(message = "Field login cannot be empty or null")
     @Pattern(message = "Login is not valid", regexp = "^[a-zA-Z][a-zA-Z0-9-_\\.]{1,20}$")
     private String login;
+
     private String name;
-    @Birthday
+
+    @Past
     private LocalDate birthday;
 }

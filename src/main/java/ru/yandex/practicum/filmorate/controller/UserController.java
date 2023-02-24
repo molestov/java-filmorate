@@ -22,13 +22,6 @@ public class UserController {
     private Map<Integer, User> users = new HashMap<>();
     private int id = 1;
 
-    private int setUserId() {
-        while (users.containsKey(id)) {
-            ++id;
-        }
-        return id;
-    }
-
     @GetMapping
     public List<User> getUsers() {
         return new ArrayList<User>(users.values());
@@ -36,9 +29,8 @@ public class UserController {
 
     @PostMapping
     public User addUser(@Valid @RequestBody User user) {
-        if (user.getId() == 0) {
-            user.setId(setUserId());
-        }
+        user.setId(id);
+        id++;
         if (user.getName() == null || user.getName().isEmpty()) {
             user.setName(user.getLogin());
         }
@@ -49,7 +41,7 @@ public class UserController {
 
     @PutMapping
     public User updateUser(@Valid @RequestBody User user) {
-        if (!users.containsKey(user.getId()) || user.getId() == 0) {
+        if (!users.containsKey(user.getId())) {
             throw new UnknownIdExcerption();
         }
         if (user.getName().isEmpty()) {
