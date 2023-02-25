@@ -33,7 +33,7 @@ public class FilmController {
     @PutMapping
     public Film updateFilm(@Valid @RequestBody Film film) {
         if (!films.containsKey(film.getId())) {
-            throw new UnknownIdExcerption();
+            throw new UnknownIdException();
         }
         films.replace(film.getId(), film);
         log.info("Film updated: '{}'", film.getName());

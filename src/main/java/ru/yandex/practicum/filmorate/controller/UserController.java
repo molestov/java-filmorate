@@ -42,7 +42,7 @@ public class UserController {
     @PutMapping
     public User updateUser(@Valid @RequestBody User user) {
         if (!users.containsKey(user.getId())) {
-            throw new UnknownIdExcerption();
+            throw new UnknownIdException();
         }
         if (user.getName().isEmpty()) {
             user.setName(user.getLogin());
